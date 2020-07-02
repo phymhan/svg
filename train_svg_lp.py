@@ -364,8 +364,9 @@ for epoch in range(opt.niter):
     prior.eval()
     
     x = next(testing_batch_generator)
-    plot(x, epoch)
-    plot_rec(x, epoch)
+    with torch.no_grad():
+        plot(x, epoch)
+        plot_rec(x, epoch)
 
     # save the model
     torch.save({
