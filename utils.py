@@ -331,9 +331,10 @@ def make_image(tensor):
     if tensor.size(0) == 1:
         tensor = tensor.expand(3, tensor.size(1), tensor.size(2))
     # pdb.set_trace()
-    return toimage(tensor.numpy(),
-                              high=255*tensor.max(),
-                              channel_axis=0)
+    tensor = tensor.numpy()
+    return toimage(tensor,
+                   high=255*tensor.max(),
+                   channel_axis=0)
 
 def draw_text_tensor(tensor, text):
     np_x = tensor.transpose(0, 1).transpose(1, 2).data.cpu().numpy()
