@@ -138,9 +138,10 @@ def image_tensor(inputs, padding=1):
 def save_np_img(fname, x):
     if x.shape[0] == 1:
         x = np.tile(x, (3, 1, 1))
-    img = scipy.misc.toimage(x,
-                             high=255*x.max(),
-                             channel_axis=0)
+    # img = scipy.misc.toimage(x,
+    #                          high=255*x.max(),
+    #                          channel_axis=0)
+    img = Image.fromarray(x)
     img.save(fname)
 
 def make_image(tensor):
